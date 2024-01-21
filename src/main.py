@@ -12,16 +12,23 @@ SEARCH_QUERY = "Ecommerce"
 
 # Enter the GEO_URN of your location
 # you can find it by searching for your location on LinkedIn
-GEO_URN = "[\"101452733\"]" # Current location is `Australia`
+GEO_URN = "[\"101165590\"]" # Current location is `United Kingdom`
+
+# This determines whether the script will ask you before sending the connection request
+# to someone, or not.
+ASK_BEFORE_SENDING = False
 
 # Enter the path to your geckodriver executable
 GECKODRIVER_PATH = "D:\\Projects\\geckodriver-v0.34.0-win32\\geckodriver.exe"
-N_SEARCH_RESULTS = 15
+N_SEARCH_RESULTS = 30
 
 # The message you want to send to the people
 # The only variable right now is {{name}}, which will be replaced by the person's name
 MESSAGE_WITH_NAME = "Hello {{name}}, I would love to connect with you! I hope you are having a great day."
 MESSAGE_WITHOUT_NAME = "Hello, I would love to connect with you! I hope you are having a great day."
+
+# From which page to start getting people
+CURRENT_PAGE = 11
 
 # IMPORTANT
 # Change this depending on your language
@@ -33,7 +40,6 @@ CONTENT_OF_CONNECTION_BUTTON = "Vernetzen"
 # ---- DON'T TOUCH ----
 PEOPLE = []
 MAX_PAGES = 10
-CURRENT_PAGE = 1
 BASE_LINKEDIN_URL = "https://www.linkedin.com"
 RESULTS_LIST_CLASS = "reusable-search__entity-result-list"
 PAGINATION_LIST_CLASS = "artdeco-pagination__pages"
@@ -306,7 +312,8 @@ def main():
                 try:
                     if CONTENT_OF_SEND_BUTTON in button.find_element(By.TAG_NAME, "span").text:
                         # Click the button
-                        input(colored("[?] Press any key to send the connection request...", "light_magenta"))
+                        if ASK_BEFORE_SENDING:
+                            input(colored("[?] Press any key to send the connection request...", "light_magenta"))
                         button.click()
                         print(colored("[+] Connection request sent.", "green"))
                         break
