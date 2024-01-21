@@ -258,12 +258,17 @@ def main():
                 # artdeco-dropdown__content-inner
                 dropdown = driver.find_element(By.CLASS_NAME, "artdeco-dropdown__content-inner").find_element(By.TAG_NAME, "ul")
 
-                # Get all `li` elements
-                dropdown_items = dropdown.find_elements(By.TAG_NAME, "li")
+                # Get all `span` elements
+                dropdown_items = dropdown.find_elements(By.TAG_NAME, "span")
 
                 for item in dropdown_items:
-                    if CONTENT_OF_CONNECTION_BUTTON in item.find_element(By.TAG_NAME, "span").text:
-                        item.click()
+                    if CONTENT_OF_CONNECTION_BUTTON in item.text:
+                        # Get parent `div` element
+                        parent = item.find_element(By.XPATH, "..")
+
+                        # Click the parent element
+                        parent.click()
+
                         break
             except:
                 continue
