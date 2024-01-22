@@ -13,7 +13,7 @@ SEARCH_QUERY = "Ecommerce"
 
 # Enter the GEO_URN of your location
 # you can find it by searching for your location on LinkedIn
-GEO_URN = "[\"101282230\"]" # Current location is `Switzerland`
+GEO_URN = "[\"103644278\"]" # Current location is `United States`
 
 # This determines whether the script will ask you before sending the connection request
 # to someone, or not.
