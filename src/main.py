@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
+from webdriver_manager.firefox import GeckoDriverManager
 
 # Enter your search query or keywords here
 SEARCH_QUERY = "Ecommerce"
@@ -18,8 +19,7 @@ GEO_URN = "[\"101165590\"]" # Current location is `United Kingdom`
 # to someone, or not.
 ASK_BEFORE_SENDING = False
 
-# Enter the path to your geckodriver executable
-GECKODRIVER_PATH = "D:\\Projects\\geckodriver-v0.34.0-win32\\geckodriver.exe"
+# How many people you want to connect to
 N_SEARCH_RESULTS = 30
 
 # The message you want to send to the people
@@ -71,6 +71,12 @@ def main():
     # Prepare folder structure
     prepare_strucutre()
 
+    # Check if user supplied --n flag
+    temp_n_search_results = get_n_search_results(sys.argv)
+
+    if temp_n_search_results:
+        N_SEARCH_RESULTS = temp_n_search_results
+
     # Load people from file
     temp_people = get_people_list_from_file(sys.argv)
 
@@ -97,11 +103,11 @@ def main():
     options.add_argument(firefox_profile_location)
 
     # Instantiate Firefox Service
-    service = Service(GECKODRIVER_PATH)
+    service = Service(GeckoDriverManager().install())
 
     # Instantiate Firefox Driver
     driver = webdriver.Firefox(service=service, options=options)
-        
+
     if not temp_people:
         # Go to LinkedIn
         driver.get(f"{BASE_LINKEDIN_URL}/search/results/people/?geoUrn={GEO_URN}&keywords={SEARCH_QUERY}&origin=SWITCH_SEARCH_VERTICAL&sid=p%2CR")
@@ -116,7 +122,7 @@ def main():
         scroll_to_bottom(driver)
 
         wait(2)
-        
+
         # Get pagination list
         pagination_list = driver.find_element(By.CLASS_NAME, PAGINATION_LIST_CLASS)
 
@@ -128,7 +134,7 @@ def main():
                 break
 
             # Print current page message
-            print(colored(f"[+] Navigating to page {CURRENT_PAGE}...", "light_yellow"))
+            print(colored(f"[+] Navigating to page {CURRENT_PAGE}...", "yellow"))
 
             # Go to Page URL
             driver.get(f"{BASE_LINKEDIN_URL}/search/results/people/?geoUrn={GEO_URN}&keywords={SEARCH_QUERY}&origin=SWITCH_SEARCH_VERTICAL&sid=p%2CR&page={CURRENT_PAGE}")
@@ -206,14 +212,14 @@ def main():
     # Tell user how many people were found
     print(colored(f"[+] Found {len(PEOPLE)} people.", "green"))
 
-    input(colored("[?] Press any key to continue...", "light_magenta"))
+    input(colored("[?] Press any key to continue...", "magenta"))
 
     # ----------------------------------------------------------- #
     # This is where the script begins sending connection requests #
     # ----------------------------------------------------------- #
 
     for person in PEOPLE:
-        print(colored(f"[+] Sending connection request to {person['name'] if person['name'] else person['subtitle']}...", "light_yellow"))
+        print(colored(f"[+] Sending connection request to {person['name'] if person['name'] else person['subtitle']}...", "yellow"))
 
         # Navigate to profile url
         driver.get(person["profile_url"])
@@ -318,9 +324,9 @@ def main():
                     if CONTENT_OF_SEND_BUTTON in button.find_element(By.TAG_NAME, "span").text:
                         # Click the button
                         if ASK_BEFORE_SENDING:
-                            input(colored("[?] Press any key to send the connection request...", "light_magenta"))
+                            input(colored("[?] Press any key to send the connection request...", "magenta"))
                         button.click()
-                        print(colored("[+] Connection request sent.", "green"))
+                        print(colored(f"[+] Sent {person['name']} a connection request.", "green"))
                         break
                 except:
                     continue
@@ -328,9 +334,11 @@ def main():
                 print(colored("[!] Could not find the send button.", "red"))
                 continue
         except:
-            print(colored("[*] Connection request already sent.", "light_cyan"))
+            print(colored("[*] Connection request already sent.", "cyan"))
             continue
-        
+
+    print(colored("[+] Done.", "green"))
+
 
 if __name__ == "__main__":
     main()

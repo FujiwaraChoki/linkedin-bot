@@ -9,7 +9,7 @@ def close_all_firefox_instances():
     """
     Closes all Firefox instances.
     """
-    print(colored("[*] Closing all Firefox instances...", "light_yellow"))
+    print(colored("[*] Closing all Firefox instances...", "yellow"))
 
     if os.name == "nt":
         os.system("taskkill /im firefox.exe /f")
@@ -45,7 +45,7 @@ def scroll_to_bottom(driver):
     """
     Scrolls to the bottom of the page.
     """
-    print(colored("[*] Scrolling to bottom of page...", "light_yellow"))
+    print(colored("[*] Scrolling to bottom of page...", "yellow"))
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 def print_ascii_art():
@@ -54,13 +54,25 @@ def print_ascii_art():
     """
     with open("assets/ascii_art.txt", "r") as f:
         ascii_art = f.read()
-        print(colored(ascii_art, "light_cyan"))
+        print(colored(ascii_art, "cyan"))
+
+def get_n_search_results(argv):
+    """
+    Checks if the user has specified the number of search results to scrape using the --n flag.
+    If yes, returns the number of search results. If no, ask for it.
+    """
+    if "--n" in argv:
+        n_index = argv.index("--n")
+        n = argv[n_index + 1]
+        return int(n)
+    else:
+        return int(input(colored("[*] Using default amount of search results: 30", "magenta")))
 
 def start_message():
     """
     Prints out the starting message.
     """
-    print(colored("[*] Initializing browser...", "light_yellow"))
+    print(colored("[*] Initializing browser...", "yellow"))
 
 def get_firefox_profile_location(argv):
     """"
@@ -72,7 +84,7 @@ def get_firefox_profile_location(argv):
         profile_location = argv[profile_index + 1]
         return profile_location
     else:
-        return input(colored("[?] Enter the location of your Firefox profile: ", "light_magenta"))
+        return input(colored("[?] Enter the location of your Firefox profile: ", "magenta"))
 
 def get_headless(argv):
     """
@@ -102,7 +114,7 @@ def wait(s):
     """
     Waits for s seconds.
     """
-    print(colored(f"[*] Waiting for {s} seconds...", "light_yellow"))
+    print(colored(f"[*] Waiting for {s} seconds...", "yellow"))
     time.sleep(s)
 
 def prepare_strucutre():
@@ -125,4 +137,4 @@ def save_to_json(data):
     with open(filename, "w") as f:
         f.write(json.dumps(data, indent=4))
 
-    print(colored(f"[+] Saved data to {filename}", "light_green"))
+    print(colored(f"[+] Saved data to {filename}", "green"))
