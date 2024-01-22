@@ -58,6 +58,7 @@ def main():
     global PEOPLE
     global MAX_PAGES
     global CURRENT_PAGE
+    global N_SEARCH_RESULTS
 
     # Print Art
     print_ascii_art()
