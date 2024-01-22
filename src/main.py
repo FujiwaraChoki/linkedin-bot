@@ -13,14 +13,14 @@ SEARCH_QUERY = "Ecommerce"
 
 # Enter the GEO_URN of your location
 # you can find it by searching for your location on LinkedIn
-GEO_URN = "[\"106693272\"]" # Current location is `Switzerland`
+GEO_URN = "[\"101282230\"]" # Current location is `Switzerland`
 
 # This determines whether the script will ask you before sending the connection request
 # to someone, or not.
 ASK_BEFORE_SENDING = False
 
 # How many people you want to connect to
-N_SEARCH_RESULTS = 30
+N_SEARCH_RESULTS = 100
 
 # The message you want to send to the people
 # The only variable right now is {{name}}, which will be replaced by the person's name
@@ -28,7 +28,7 @@ MESSAGE_WITH_NAME = "Hello {{name}}, I would love to connect with you! I hope yo
 MESSAGE_WITHOUT_NAME = "Hello, I would love to connect with you! I hope you are having a great day."
 
 # From which page to start getting people
-CURRENT_PAGE = 20
+CURRENT_PAGE = 1
 
 # IMPORTANT
 # Change this depending on your language
@@ -84,6 +84,12 @@ def main():
     if temp_people:
         print(colored(f"[+] Loaded {len(temp_people)} people from file.", "green"))
         PEOPLE = temp_people
+
+    # See if user supplied a custom query
+    temp_query = get_query(sys.argv)
+
+    if temp_query:
+        SEARCH_QUERY = temp_query
 
     # Get Firefox Profile Location and check if it is valid
     firefox_profile_location = get_firefox_profile_location(sys.argv)

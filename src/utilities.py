@@ -5,6 +5,18 @@ import json
 from termcolor import colored
 from datetime import datetime
 
+def get_query(argv):
+    """
+    Checks if the user provided the search query through the arguments.
+    """
+    if "--query" in argv:
+        query_index = argv.index("--query")
+        query = argv[query_index + 1]
+
+        return str(query)
+    else:
+        return None
+
 def close_all_firefox_instances():
     """
     Closes all Firefox instances.
