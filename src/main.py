@@ -245,7 +245,7 @@ def main():
                 continue
         else:
             print(colored("[!] Could not find the connection button the conventional way.", "red"))
-            
+
             try:
                 # Get all buttons
                 buttons = action_container.find_elements(By.TAG_NAME, "button")
@@ -260,7 +260,7 @@ def main():
                             break
                     except:
                         continue
-                
+
                 # artdeco-dropdown__content-inner
                 dropdown = driver.find_element(By.CLASS_NAME, "artdeco-dropdown__content-inner").find_element(By.TAG_NAME, "ul")
 
@@ -278,7 +278,7 @@ def main():
                         break
             except:
                 continue
-                
+
         try:
             # Get modal action bar
             modal_action_bar = driver.find_element(By.CLASS_NAME, MODAL_ACTION_BAR)
