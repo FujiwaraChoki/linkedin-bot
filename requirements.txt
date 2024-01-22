@@ -1,2 +1,3 @@
 termcolor
 selenium==4.9.0
+selenium_firefox==0.1.0
