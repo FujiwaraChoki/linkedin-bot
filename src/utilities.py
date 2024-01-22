@@ -66,7 +66,8 @@ def get_n_search_results(argv):
         n = argv[n_index + 1]
         return int(n)
     else:
-        return int(input(colored("[*] Using default amount of search results: 30", "magenta")))
+        print(colored("[*] Using default amount of search results: 30", "magenta"))
+        return None
 
 def start_message():
     """
