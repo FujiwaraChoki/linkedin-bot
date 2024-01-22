@@ -13,7 +13,7 @@ SEARCH_QUERY = "Ecommerce"
 
 # Enter the GEO_URN of your location
 # you can find it by searching for your location on LinkedIn
-GEO_URN = "[\"101165590\"]" # Current location is `United Kingdom`
+GEO_URN = "[\"106693272\"]" # Current location is `Switzerland`
 
 # This determines whether the script will ask you before sending the connection request
 # to someone, or not.
@@ -28,7 +28,7 @@ MESSAGE_WITH_NAME = "Hello {{name}}, I would love to connect with you! I hope yo
 MESSAGE_WITHOUT_NAME = "Hello, I would love to connect with you! I hope you are having a great day."
 
 # From which page to start getting people
-CURRENT_PAGE = 11
+CURRENT_PAGE = 20
 
 # IMPORTANT
 # Change this depending on your language
