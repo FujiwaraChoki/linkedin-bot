@@ -345,6 +345,7 @@ def main():
                         if ASK_BEFORE_SENDING:
                             input(colored("[?] Press any key to send the connection request...", "magenta"))
                         button.click()
+                        wait(0.7)
                         print(colored(f"[+] Sent {person['name']} a connection request.", "green"))
                         break
                 except:
@@ -352,8 +353,8 @@ def main():
             else:
                 print(colored("[!] Could not find the send button.", "red"))
                 continue
-        except:
-            print(colored("[*] Connection request already sent.", "cyan"))
+        except Exception as err:
+            print(colored(f"[*] Error: {err}", "red"))
             continue
 
     print(colored("\n[+] Done.", "green"))

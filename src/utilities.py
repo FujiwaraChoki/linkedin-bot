@@ -127,7 +127,6 @@ def wait(s):
     """
     Waits for s seconds.
     """
-    print(colored(f"[*] Waiting for {s} seconds...", "yellow"))
     time.sleep(s)
 
 def prepare_strucutre():

@@ -7,7 +7,6 @@ Automatically connect with people on LinkedIn, for your business, or for meeting
 - Provide a JSON file of people you want to connect with
 - Scrape & Connect with people, all in one go
 - Automatically send a message to the people you connect with
-- Bypass LinkedIn Connection Limits
 
 ## Installation
 
