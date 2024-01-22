@@ -229,7 +229,7 @@ def main():
     # Tell user how many people were found
     print(colored(f"[+] Found {len(PEOPLE)} people.", "green"))
 
-    input(colored("[?] Press any key to continue...", "magenta"))
+    input(colored("[?] Press any key to start sending connection requests...", "magenta"))
 
     # ----------------------------------------------------------- #
     # This is where the script begins sending connection requests #
