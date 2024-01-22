@@ -245,8 +245,10 @@ def main():
             except:
                 continue
         else:
+            # WARNING: This does not work yet
             print(colored("[!] Could not find the connection button the conventional way.", "red"))
 
+            """
             try:
                 # Get all buttons
                 buttons = action_container.find_elements(By.TAG_NAME, "button")
@@ -279,7 +281,7 @@ def main():
                         break
             except:
                 continue
-
+            """
         try:
             # Get modal action bar
             modal_action_bar = driver.find_element(By.CLASS_NAME, MODAL_ACTION_BAR)
