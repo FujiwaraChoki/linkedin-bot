@@ -340,7 +340,7 @@ def main():
             print(colored("[*] Connection request already sent.", "cyan"))
             continue
 
-    print(colored("[+] Done.", "green"))
+    print(colored("\n[+] Done.", "green"))
 
 
 if __name__ == "__main__":
