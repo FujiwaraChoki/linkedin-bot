@@ -9,7 +9,7 @@ from selenium.webdriver.firefox.options import Options
 from webdriver_manager.firefox import GeckoDriverManager
 
 # Enter your search query or keywords here
-SEARCH_QUERY = "Ecommerce"
+SEARCH_QUERY = "Restaurant owner"
 
 # Enter the GEO_URN of your location
 # you can find it by searching for your location on LinkedIn
@@ -57,6 +57,7 @@ def main():
     """
     global PEOPLE
     global MAX_PAGES
+    global SEARCH_QUERY
     global CURRENT_PAGE
     global N_SEARCH_RESULTS
 
