@@ -29,6 +29,14 @@ pip install -r requirements.txt
 
 > Also, tweak the parameters in the `src/main.py` file to your liking, for example due to your language.
 
+To show the help message, run the following command.
+
+```bash
+python src/main.py --help
+```
+
+To run the bot, follow this template:
+
 ```bash
 python src/main.py --profile {str} (Path to your Firefox profile) [OPTIONAL: --headless, --query {str} (Your search query (or your niche)), --people (Where your JSON file is located), --n {num} (Amount of people you want to connect with, if not supplied, default 30 is used)]
 ```

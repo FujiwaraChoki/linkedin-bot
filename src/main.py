@@ -63,6 +63,16 @@ def main():
     # Print Art
     print_ascii_art()
 
+    if "--help" in sys.argv:
+        print(colored("[*] Help:", "magenta"))
+        print(colored("    --n <number> - Specify the number of search results to scrape.", "magenta"))
+        print(colored("    --profile <location> - Specify the location of your Firefox profile.", "magenta"))
+        print(colored("    --headless - Specify if you want to run the script headless or not.", "magenta"))
+        print(colored("    --query <query> - Specify the query you want to search for.", "magenta"))
+        print(colored("    --people <file> - Specify the file you want to load people from.", "magenta"))
+        print(colored("    --help - Show this help message.\n\n", "magenta"))
+        return
+
     # Close all Firefox instances
     close_all_firefox_instances()
 
