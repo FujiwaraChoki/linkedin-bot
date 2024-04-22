@@ -48,7 +48,7 @@ PERSON_SUBTITLE_CLASS = "entity-result__primary-subtitle"
 PERSON_SECONDARY_SUBTITLE_CLASS = "entity-result__secondary-subtitle"
 PERSON_SUMMARY_CLASS = "entity-result__summary"
 PERSON_ACTION_BUTTON = "entity-result__actions"
-ACTION_CONTAINER = "pv-top-card-v2-ctas"
+ACTION_CONTAINER = "IZLqPHsLPvmtnxTRikvwkBUVdnExLjJlPwssjbtQ" # Untested, might not work. Open an issue if it does not.
 MODAL_ACTION_BAR = "artdeco-modal__actionbar"
 
 def main():
